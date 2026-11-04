@@ -1,5 +1,5 @@
 /* =========================================================
-   Finance Portfolio — Blue / Grey / White
+   Sheng Jun Gan — Portfolio · Blue / Grey / White
    ========================================================= */
 
 :root {
@@ -23,7 +23,7 @@
   --shadow: 0 1px 2px rgba(10, 26, 47, .06), 0 8px 24px rgba(10, 26, 47, .06);
   --max: 1120px;
 
-  --sans: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
 
@@ -67,7 +67,7 @@ p + p { margin-top: 1rem; }
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-block;
+  display: inline-flex; align-items: center; gap: .5rem;
   padding: .8rem 1.4rem;
   border-radius: 8px;
   background: var(--blue-600);
@@ -102,8 +102,8 @@ p + p { margin-top: 1rem; }
   padding: .55rem 0;
   animation: scroll 40s linear infinite;
 }
-.ticker b { color: var(--white); font-weight: 500; margin: 0 .35rem; }
-.ticker i { font-style: normal; }
+.ticker span { letter-spacing: .06em; }
+.ticker .hl { color: #9cc3f5; }
 .up   { color: var(--up); }
 .down { color: var(--down); }
 
@@ -127,6 +127,7 @@ p + p { margin-top: 1rem; }
 .nav__links { display: flex; align-items: center; gap: 2rem; font-size: .95rem; }
 .nav__links a:not(.btn) { color: var(--grey-700); transition: color .2s; }
 .nav__links a:not(.btn):hover { color: var(--blue-600); }
+.nav__icon { display: inline-flex; color: var(--navy-800) !important; }
 
 .nav__toggle { display: none; }
 .nav__burger { display: none; cursor: pointer; width: 28px; height: 20px; position: relative; }
@@ -191,15 +192,9 @@ p + p { margin-top: 1rem; }
 .terminal__rows li:last-child { border-bottom: 0; }
 .terminal__rows li span:first-child { color: var(--grey-500); }
 .terminal__rows li span:last-child { color: var(--white); text-align: right; }
+.terminal__rows .ok { color: #6fd3a3; }
+.spark { display: block; width: 100%; height: 90px; }
 
-.bars { display: flex; align-items: flex-end; gap: 8px; height: 90px; padding: 0 18px 18px; }
-.bars i {
-  flex: 1; height: var(--h);
-  background: linear-gradient(to top, var(--blue-600), var(--blue-500));
-  border-radius: 3px 3px 0 0; opacity: .85;
-  animation: rise 1s ease-out both;
-}
-@keyframes rise { from { height: 0; } }
 
 /* Stats strip */
 .stats {
@@ -216,7 +211,9 @@ p + p { margin-top: 1rem; }
 .two-col { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; }
 
 .grid { display: grid; gap: 24px; }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
 
 /* Timeline */
 .timeline { display: grid; gap: 24px; position: relative; }
@@ -252,11 +249,6 @@ p + p { margin-top: 1rem; }
   background: var(--grey-100); color: var(--grey-700); border: 1px solid var(--grey-300);
 }
 
-/* Skills */
-.skills { display: grid; gap: 22px; }
-.skill span { display: block; font-weight: 500; color: var(--navy-900); margin-bottom: .5rem; font-size: .95rem; }
-.meter { height: 6px; background: var(--grey-100); border-radius: 99px; overflow: hidden; }
-.meter i { display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, var(--navy-700), var(--blue-500)); border-radius: 99px; }
 
 /* Contact */
 .contact { background: linear-gradient(135deg, var(--navy-900), var(--navy-700)); color: var(--grey-300); text-align: center; }
@@ -268,10 +260,40 @@ p + p { margin-top: 1rem; }
 .footer { background: var(--navy-900); color: var(--grey-500); font-size: .85rem; border-top: 1px solid var(--navy-700); }
 .footer__inner { display: flex; justify-content: space-between; padding: 22px 24px; flex-wrap: wrap; gap: .5rem; }
 
+/* Projects: date label + award variant */
+.project .mono { display: block; margin-bottom: .5rem; }
+.project h3 { margin-bottom: .6rem; }
+.project--award { border-top-color: var(--navy-900); background: linear-gradient(180deg, var(--blue-100), var(--white) 45%); }
+
+/* About: languages */
+.langs { list-style: none; display: flex; gap: .5rem; margin-top: 1.4rem; }
+.langs li { font-size: .82rem; padding: 4px 12px; border-radius: 99px; background: var(--blue-100); color: var(--navy-700); font-weight: 500; }
+
+/* Skills (grouped chips) */
+.skillset { display: grid; gap: 26px; }
+.skillset h4 { font-family: var(--mono); font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-500); margin-bottom: .7rem; }
+.skillset .chips span { background: var(--white); font-size: .85rem; padding: 6px 12px; }
+
+/* Documents */
+.doc { display: flex; gap: 22px; align-items: flex-start; }
+.doc__icon {
+  flex: 0 0 64px; height: 80px; border-radius: 8px;
+  background: var(--navy-900); color: var(--white);
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: .85rem; font-weight: 500;
+  position: relative; overflow: hidden;
+}
+.doc__icon::after { content: ""; position: absolute; top: 0; right: 0; border-width: 0 16px 16px 0; border-style: solid; border-color: var(--grey-100) var(--grey-100) var(--blue-500) var(--blue-500); }
+.doc p { color: var(--grey-500); font-size: .95rem; margin: .3rem 0 1.1rem; }
+.doc__actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+.footer a:hover { color: var(--white); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero__grid, .two-col { grid-template-columns: 1fr; gap: 40px; }
-  .grid--3 { grid-template-columns: 1fr; }
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .timeline__item { grid-template-columns: 1fr; gap: 8px; }
   .timeline__meta { padding-top: 0; }
@@ -294,9 +316,13 @@ p + p { margin-top: 1rem; }
   .nav__toggle:checked + .nav__burger span { background: transparent; }
   .nav__toggle:checked + .nav__burger span::before { top: 0; transform: rotate(45deg); }
   .nav__toggle:checked + .nav__burger span::after  { top: 0; transform: rotate(-45deg); }
+  .grid--4 { grid-template-columns: 1fr; }
+  .doc { flex-direction: column; }
+  .doc__icon { flex: none; width: 64px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker__track, .bars i { animation: none; }
+  .ticker__track { animation: none; }
   html { scroll-behavior: auto; }
 }
+.footer p + p { margin-top: 0; }
