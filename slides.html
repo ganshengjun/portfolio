@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheng Jun Gan | Profile Deck</title>
+  <meta name="description" content="Slide profile of Sheng Jun Gan, Global Markets Dealer (Corporate Sales)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1a2f;
+      --navy-2: #0f2742;
+      --navy-3: #16365c;
+      --blue: #1f5fae;
+      --blue-2: #2f7de1;
+      --blue-soft: #e6effb;
+      --sky: #9cc3f5;
+      --ink: #0a1a2f;
+      --text: #3d4a5c;
+      --muted: #6b7787;
+      --rule: #d5dbe3;
+      --grey: #f2f4f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #d9dfe7; color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- On-screen toolbar ---------- */
+    .toolbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 20px; background: var(--navy); color: #fff; font-size: 14px;
+    }
+    .toolbar a { padding: 8px 16px; border-radius: 6px; font-weight: 500; }
+    .toolbar .back { color: #c9d1dc; }
+    .toolbar .back:hover { color: #fff; }
+    .toolbar .dl { background: var(--blue); }
+    .toolbar .dl:hover { background: var(--blue-2); }
+
+    /* ---------- Deck: fixed 1280x720 slides, scaled on screen ---------- */
+    .deck { padding: 32px 0; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .frame { width: min(1280px, 94vw); aspect-ratio: 16 / 9; position: relative; }
+    .slide {
+      position: absolute; top: 0; left: 0;
+      width: 1280px; height: 720px;
+      transform-origin: top left;
+      transform: scale(var(--s, 1));
+      background: #fff; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(10, 26, 47, .18);
+      padding: 64px 80px 0;
+      display: flex; flex-direction: column;
+    }
+
+    /* shared slide pieces */
+    .kicker {
+      font-size: 14px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 14px;
+    }
+    .slide h2 { font-size: 40px; font-weight: 700; color: var(--ink); letter-spacing: -0.015em; line-height: 1.15; }
+    .slide h2 + .lede { margin-top: 12px; font-size: 18px; color: var(--muted); max-width: 900px; }
+    .body { flex: 1; margin-top: 36px; margin-bottom: 40px; }
+    .foot {
+      height: 56px; margin: 0 -80px; padding: 0 80px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted);
+    }
+    .foot b { color: var(--ink); font-weight: 600; }
+    .slide::before { /* blue accent bar */
+      content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 6px;
+      background: linear-gradient(90deg, var(--navy), var(--blue) 55%, var(--blue-2));
+    }
+
+    .card {
+      background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 26px 28px;
+    }
+    .card h3 { font-size: 20px; color: var(--ink); font-weight: 600; line-height: 1.25; }
+    .card .meta { font-size: 14px; color: var(--blue); font-weight: 500; margin-top: 6px; }
+    .card p { font-size: 15.5px; line-height: 1.5; margin-top: 10px; }
+
+    ul.pts { list-style: none; }
+    ul.pts li { position: relative; padding-left: 22px; font-size: 16.5px; line-height: 1.5; margin-bottom: 10px; }
+    ul.pts li::before {
+      content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px;
+      border-radius: 2px; background: var(--blue-2);
+    }
+    .chip {
+      display: inline-block; padding: 6px 12px; border-radius: 6px; margin: 0 6px 8px 0;
+      font-size: 14px; font-weight: 500; background: var(--blue-soft); color: var(--navy-3);
+    }
+
+    /* ---------- Dark slides ---------- */
+    .dark { background: var(--navy); color: #c9d1dc; }
+    .dark::after { /* chart grid */
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 80% 30%, #000 10%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 80% 30%, #000 10%, transparent 70%);
+    }
+    .dark > * { position: relative; z-index: 1; }
+    .dark .kicker { color: var(--sky); }
+    .dark h1, .dark h2 { color: #fff; }
+
+    /* Title slide */
+    .title { justify-content: center; padding-top: 0; }
+    .title h1 { font-size: 84px; font-weight: 700; letter-spacing: -0.025em; line-height: 1; }
+    .title h1 span { color: var(--sky); font-weight: 400; }
+    .title .role { font-size: 26px; color: #e6effb; margin-top: 22px; font-weight: 500; }
+    .title .tags { margin-top: 34px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .title .tags span {
+      border: 1px solid rgba(156,195,245,.4); color: #e6effb; padding: 8px 16px; border-radius: 99px; font-size: 15px;
+    }
+    .title .contact { position: absolute; bottom: 52px; left: 80px; display: flex; gap: 36px; font-size: 16px; color: #c9d1dc; }
+    .title .contact b { color: #fff; font-weight: 500; }
+    .spark { position: absolute; right: 80px; top: 120px; width: 420px; height: 240px; opacity: .9; }
+
+    /* Layout helpers */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .split { display: grid; grid-template-columns: 400px 1fr; gap: 56px; }
+
+    .stat { background: var(--grey); border-radius: 14px; padding: 28px 26px; border-top: 4px solid var(--blue); }
+    .stat strong { display: block; font-size: 44px; color: var(--ink); font-weight: 700; letter-spacing: -0.02em; }
+    .stat span { font-size: 16px; color: var(--muted); }
+
+    .num { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .num:last-child { border-bottom: 0; }
+    .num i {
+      font-style: normal; flex: 0 0 34px; height: 34px; border-radius: 8px;
+      background: var(--navy); color: #fff; font-weight: 600; font-size: 15px;
+      display: grid; place-items: center;
+    }
+    .num div b { display: block; color: var(--ink); font-size: 17px; font-weight: 600; }
+    .num div span { font-size: 15.5px; line-height: 1.45; }
+
+    .side { background: var(--grey); border-radius: 14px; padding: 30px; }
+    .side h3 { font-size: 22px; color: var(--ink); }
+    .side .meta { color: var(--blue); font-weight: 500; font-size: 15px; margin: 6px 0 22px; }
+    .side .lbl { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 18px 0 10px; }
+
+    /* Timeline */
+    .tl { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 30px; }
+    .tl::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: linear-gradient(90deg, var(--rule), var(--blue)); }
+    .tl > div { position: relative; padding-top: 40px; }
+    .tl > div::before {
+      content: ""; position: absolute; top: 2px; left: 0; width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; border: 4px solid var(--blue);
+    }
+    .tl > div.now::before { background: var(--blue); box-shadow: 0 0 0 6px var(--blue-soft); }
+    .tl .when { font-size: 14px; font-weight: 600; color: var(--blue); letter-spacing: .04em; }
+    .tl h3 { font-size: 20px; color: var(--ink); margin-top: 6px; line-height: 1.3; }
+    .tl p { font-size: 15.5px; margin-top: 6px; line-height: 1.45; }
+
+    .big-quote { font-size: 30px; line-height: 1.35; color: #fff; font-weight: 500; max-width: 1000px; letter-spacing: -0.01em; }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+    .pillars div { border-top: 2px solid var(--blue-2); padding-top: 16px; }
+    .pillars b { display: block; color: #fff; font-size: 19px; margin-bottom: 6px; }
+    .pillars span { font-size: 15.5px; line-height: 1.5; }
+    .end-contact { position: absolute; left: 80px; right: 80px; bottom: 52px; display: flex; gap: 40px; font-size: 17px; }
+    .end-contact b { color: #fff; font-weight: 500; }
+
+    @page { size: 1280px 720px; margin: 0; }
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .deck { padding: 0; gap: 0; display: block; }
+      .frame { width: 1280px; height: 720px; aspect-ratio: auto; break-after: page; page-break-after: always; }
+      .frame:last-child { break-after: auto; page-break-after: auto; }
+      .slide { transform: none !important; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <span class="back">Profile deck source — print to PDF as slides.pdf</span>
+    <a href="slides.pdf" download="Sheng_Jun_Gan_Profile_Deck.pdf" class="dl">Download PDF</a>
+  </div>
+
+  <div class="deck">
+
+    <!-- 1. Title -->
+    <div class="frame"><section class="slide dark title">
+      <svg class="spark" viewBox="0 0 420 240" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2f7de1" stop-opacity=".35"/><stop offset="1" stop-color="#2f7de1" stop-opacity="0"/></linearGradient></defs>
+        <path d="M0 200 L40 182 L80 190 L120 150 L160 160 L200 118 L240 128 L280 86 L320 96 L360 52 L420 30 L420 240 L0 240Z" fill="url(#g)"/>
+        <path d="M0 200 L40 182 L80 190 L120 150 L160 160 L200 118 L240 128 L280 86 L320 96 L360 52 L420 30" fill="none" stroke="#2f7de1" stroke-width="3"/>
+        <circle cx="420" cy="30" r="6" fill="#9cc3f5"/>
+      </svg>
+      <p class="kicker">Professional Profile</p>
+      <h1>Sheng Jun <span>Gan</span></h1>
+      <p class="role">Global Markets Dealer · Corporate Sales</p>
+      <div class="tags">
+        <span>FX Spot &amp; Forwards</span><span>Rates &amp; Swaps</span><span>Hedging Solutions</span><span>eFX Adoption</span>
+      </div>
+      <div class="contact">
+        <span><b>ganshengjun0@gmail.com</b></span>
+        <span><b>linkedin.com/in/sheng-jun-gan</b></span>
+        <span>Kuala Lumpur, Malaysia</span>
+      </div>
+    </section></div>
+
+    <!-- 2. At a glance -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">01 · At a Glance</p>
+      <h2>Corporate FX sales with a trader’s discipline</h2>
+      <p class="lede">Global Markets Dealer at UOB Malaysia, delivering FX and money market insights to corporate clients and executing their transactions accurately in a fast-paced dealing environment.</p>
+      <div class="body">
+        <div class="g4">
+          <div class="stat"><strong>PKMC</strong><span>Modules I–IV · Licensed Dealer</span></div>
+          <div class="stat"><strong>CFA</strong><span>Level I passed · Aug 2025</span></div>
+          <div class="stat"><strong>3.64</strong><span>CGPA · WAM 78 · Monash University</span></div>
+          <div class="stat"><strong>1st</strong><span>Deloitte AdvantEDGE Case Competition</span></div>
+        </div>
+        <div class="g2" style="margin-top:48px">
+          <div>
+            <p class="kicker" style="color:var(--muted)">Currencies covered</p>
+            <span class="chip">USD</span><span class="chip">EUR</span><span class="chip">GBP</span><span class="chip">JPY</span><span class="chip">CNH</span><span class="chip">SGD</span><span class="chip">AUD</span><span class="chip">MYR</span>
+          </div>
+          <div>
+            <p class="kicker" style="color:var(--muted)">Languages</p>
+            <span class="chip">English</span><span class="chip">Chinese</span><span class="chip">Malay</span>
+          </div>
+        </div>
+        <div style="margin-top:40px;background:var(--navy);border-radius:14px;padding:24px 30px;display:flex;gap:28px;align-items:center">
+          <span style="flex:0 0 auto;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)">Next step</span>
+          <span style="font-size:18px;line-height:1.45;color:#e6effb">A Global Markets sales role deepening client coverage across FX and Rates, growing cross-sell, and driving digitalisation on the desk.</span>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>02</span></div>
+    </section></div>
+
+    <!-- 3. Current role -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">02 · Current Role</p>
+      <h2>Dealer, Corporate Sales – Global Markets</h2>
+      <div class="body split">
+        <div class="side">
+          <h3>United Overseas Bank (Malaysia) Bhd</h3>
+          <p class="meta">Dec 2025 – Present · Kuala Lumpur</p>
+          <p class="lbl">Products</p>
+          <span class="chip">FX Spot</span><span class="chip">Forwards</span><span class="chip">Extensions</span><span class="chip">Early Take-ups</span><span class="chip">Swaps</span>
+          <p class="lbl">Platforms</p>
+          <span class="chip">eFX</span><span class="chip">Voice Dealing</span>
+        </div>
+        <div>
+          <div class="num"><i>1</i><div><b>Client coverage</b><span>Timely market updates and analysis on FX majors and MYR for corporate clients.</span></div></div>
+          <div class="num"><i>2</i><div><b>Accurate execution</b><span>FX spot, forward, extension and early take-up deals, priced accurately and delivered error-free with trading and operations.</span></div></div>
+          <div class="num"><i>3</i><div><b>Hedging support</b><span>Market views on FX rates and swaps for key large corporates, alongside senior salespersons.</span></div></div>
+          <div class="num"><i>4</i><div><b>Digital adoption</b><span>Pitch, onboard and train clients on eFX — moving them from voice dealing to digital execution.</span></div></div>
+          <div class="num"><i>5</i><div><b>Cross-sell</b><span>Spot opportunities across FX and hedging products to deepen wallet share.</span></div></div>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>03</span></div>
+    </section></div>
+
+    <!-- 4. Career path -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">03 · Career Path</p>
+      <h2>From markets theory to the dealing desk</h2>
+      <p class="lede">Each step has added a piece: market instinct, analytical rigour, regulatory grounding and client delivery.</p>
+      <div class="body" style="display:flex;align-items:center">
+        <div class="tl" style="width:100%;margin-top:0">
+          <div><p class="when">2019 – 2021</p><h3>University of Nottingham</h3><p>Foundation in Science (CS with AI) — Distinction</p></div>
+          <div><p class="when">May – Sep 2022</p><h3>MyForexFunds</h3><p>Funded trader — 8% and 5% returns in first two months</p></div>
+          <div><p class="when">Nov 2024 – Feb 2025</p><h3>Deloitte</h3><p>Forensic &amp; Financial Crime intern — AML and investigations</p></div>
+          <div><p class="when">Jun 2025</p><h3>Monash University</h3><p>B.Bus &amp; Comm — Banking &amp; Finance; Applied Economics</p></div>
+          <div><p class="when">Aug 2025</p><h3>CFA Level I</h3><p>Passed</p></div>
+          <div class="now"><p class="when">Dec 2025 → Now</p><h3>UOB Global Markets</h3><p>Corporate sales dealer · PKMC licensed Jul 2026</p></div>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>04</span></div>
+    </section></div>
+
+    <!-- 5. Prior experience -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">04 · Prior Experience</p>
+      <h2>Risk, compliance and live trading</h2>
+      <div class="body g2">
+        <div class="card">
+          <h3>Strategy, Risk &amp; Transaction Intern</h3>
+          <p class="meta">Deloitte · Forensic &amp; Financial Crime · Nov 2024 – Feb 2025</p>
+          <ul class="pts" style="margin-top:18px">
+            <li>Built a survey-driven pitch deck for a multinational client that contributed to a successful sales deal.</li>
+            <li>Identified financial discrepancies on an AML audit project.</li>
+            <li>Assessed whistleblower reports across multiple forensic investigations.</li>
+            <li>Validated shareholder votes on-site for a regulatory risk engagement.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Funded Trader</h3>
+          <p class="meta">MyForexFunds · May 2022 – Sep 2022</p>
+          <div style="display:flex;gap:16px;margin-top:18px">
+            <div class="stat" style="flex:1;padding:16px 18px"><strong style="font-size:30px">+8%</strong><span>Month 1 return</span></div>
+            <div class="stat" style="flex:1;padding:16px 18px"><strong style="font-size:30px">+5%</strong><span>Month 2 return</span></div>
+            <div class="stat" style="flex:1;padding:16px 18px"><strong style="font-size:30px">0.5–1%</strong><span>Max risk per trade</span></div>
+          </div>
+          <ul class="pts" style="margin-top:18px">
+            <li>Combined technical and fundamental analysis to make trading decisions.</li>
+            <li>Followed a structured trading plan to keep decisions disciplined.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>05</span></div>
+    </section></div>
+
+    <!-- 6. Education & certifications -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">05 · Education &amp; Certifications</p>
+      <h2>Licensed, qualified and still learning</h2>
+      <div class="body g4">
+        <div class="card" style="border-top:4px solid var(--blue)">
+          <span class="chip">Licence · Jul 2026</span>
+          <h3 style="margin-top:8px">PKMC Modules I–IV</h3>
+          <p class="meta">AICB / ACI-FMAM · Licensed Dealer</p>
+          <p>Regulatory framework, money market, FX market, risk management &amp; basic derivatives.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--blue)">
+          <span class="chip">Charter · Aug 2025</span>
+          <h3 style="margin-top:8px">CFA Program</h3>
+          <p class="meta">Passed Level I</p>
+          <p>Ethics, quantitative methods, economics, fixed income, derivatives and portfolio management.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--blue)">
+          <span class="chip">Degree · 2022–2025</span>
+          <h3 style="margin-top:8px">Monash University</h3>
+          <p class="meta">B. Business &amp; Commerce</p>
+          <p>Double major in Banking &amp; Financial Management and Applied Economics. WAM 78 · CGPA 3.64.</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--blue)">
+          <span class="chip">Foundation · 2019–2021</span>
+          <h3 style="margin-top:8px">University of Nottingham</h3>
+          <p class="meta">Foundation in Science</p>
+          <p>Computer Science with Artificial Intelligence — graduated with Distinction.</p>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>06</span></div>
+    </section></div>
+
+    <!-- 7. Projects -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">06 · Projects</p>
+      <h2>Building systems around markets</h2>
+      <div class="body g2" style="align-items:start">
+        <div class="card">
+          <h3>Algorithmic Crypto Trading System</h3>
+          <p class="meta">Personal Project · Mar 2025 – Dec 2025</p>
+          <ul class="pts" style="margin-top:18px">
+            <li>Bot automating strategies built on technical indicators.</li>
+            <li>Designed strategies and tested them in real markets to optimise performance.</li>
+            <li>Connected to a website and a Telegram bot for real-time trade notifications.</li>
+          </ul>
+          <div style="margin-top:8px"><span class="chip">Technical Analysis</span><span class="chip">Automation</span><span class="chip">Telegram Alerts</span></div>
+        </div>
+        <div class="card">
+          <h3>Investment Portfolio Project</h3>
+          <p class="meta">Monash University Australia · Mar 2024 – Jun 2024</p>
+          <ul class="pts" style="margin-top:18px">
+            <li>Diversified portfolio of shares, fixed income and money market funds aligned to client objectives.</li>
+            <li>Top-down and bottom-up selection using P/E, P/B, Debt-to-Equity and technicals.</li>
+            <li>Measured risk-adjusted returns with beta, Sharpe ratio and M-squared.</li>
+          </ul>
+          <div style="margin-top:8px"><span class="chip">Asset Allocation</span><span class="chip">Fundamentals</span><span class="chip">Risk Metrics</span></div>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>07</span></div>
+    </section></div>
+
+    <!-- 8. Leadership & skills -->
+    <div class="frame"><section class="slide">
+      <p class="kicker">07 · Leadership &amp; Skills</p>
+      <h2>Toolkit for the desk</h2>
+      <div class="body split">
+        <div class="side" style="background:var(--navy);color:#c9d1dc">
+          <p class="lbl" style="color:var(--sky);margin-top:0">Deloitte AdvantEDGE · May 2025</p>
+          <h3 style="color:#fff;font-size:30px;margin-top:4px">First Place</h3>
+          <p style="margin-top:14px;font-size:16px;line-height:1.55">Led a team of 5 as Team Leader — coordinating strategy sessions, delegating tasks and delivering the winning pitch to Deloitte judges and mentors under tight deadlines.</p>
+          <p class="lbl" style="color:var(--sky);margin-top:26px">Captainball Club · 2023–2024</p>
+          <p style="font-size:16px;line-height:1.55">Club player in leagues and tournaments with multiple medal wins.</p>
+        </div>
+        <div class="g2" style="gap:22px 28px;align-content:start">
+          <div><p class="kicker" style="color:var(--muted)">Markets</p><span class="chip">FX Spot &amp; Forwards</span><span class="chip">Swaps</span><span class="chip">Money Markets</span><span class="chip">Hedging Solutions</span><span class="chip">Trade Execution</span></div>
+          <div><p class="kicker" style="color:var(--muted)">Analysis</p><span class="chip">Financial Analysis</span><span class="chip">Risk Management</span><span class="chip">Investment Strategy</span><span class="chip">AML Audit</span></div>
+          <div><p class="kicker" style="color:var(--muted)">Tools</p><span class="chip">Bloomberg</span><span class="chip">Excel</span><span class="chip">PowerPoint</span><span class="chip">AI Workflow Automation</span></div>
+          <div><p class="kicker" style="color:var(--muted)">Programming</p><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">C</span><span class="chip">HTML / CSS</span></div>
+          <div style="grid-column:1 / -1"><p class="kicker" style="color:var(--muted)">Client skills</p><span class="chip">Relationship Management</span><span class="chip">Strategic Thinking</span><span class="chip">Problem-Solving</span><span class="chip">Communication</span><span class="chip">Team Coordination</span></div>
+        </div>
+      </div>
+      <div class="foot"><span><b>Sheng Jun Gan</b> · Global Markets</span><span>08</span></div>
+    </section></div>
+
+    <!-- 9. Close -->
+    <div class="frame"><section class="slide dark">
+      <p class="kicker" style="margin-top:20px">What I bring to the desk</p>
+      <p class="big-quote">Deeper client coverage across FX and Rates, sharper cross-sell, and a push to digitalise how clients deal with the bank.</p>
+      <div class="pillars">
+        <div><b>Client-first coverage</b><span>Timely, practical market views that help corporates make hedging decisions.</span></div>
+        <div><b>Execution you can trust</b><span>Accurate pricing and error-free delivery, built on trading discipline.</span></div>
+        <div><b>Digital mindset</b><span>eFX onboarding today, process automation and better tools tomorrow.</span></div>
+      </div>
+      <div class="end-contact">
+        <span><b>ganshengjun0@gmail.com</b></span>
+        <span><b>linkedin.com/in/sheng-jun-gan</b></span>
+        <span>Kuala Lumpur, Malaysia</span>
+      </div>
+    </section></div>
+
+  </div>
+
+  <script>
+    // Scale fixed-size slides to fit the screen width (print uses full size).
+    function fit() {
+      document.querySelectorAll('.frame').forEach(f => {
+        f.querySelector('.slide').style.setProperty('--s', f.clientWidth / 1280);
+      });
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  </script>
+</body>
+</html>
