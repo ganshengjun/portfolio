@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheng Jun Gan | Global Markets</title>
+  <meta name="description" content="Sheng Jun Gan — Global Markets corporate sales dealer covering FX, rates and commodities." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Market ticker (static sample values, purely decorative) ===== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>USD/MYR <b>4.2150</b> <i class="up">▲0.12%</i></span>
+      <span>EUR/USD <b>1.0842</b> <i class="down">▼0.08%</i></span>
+      <span>GBP/USD <b>1.2715</b> <i class="up">▲0.21%</i></span>
+      <span>USD/JPY <b>149.32</b> <i class="up">▲0.34%</i></span>
+      <span>USD/CNH <b>7.2410</b> <i class="down">▼0.05%</i></span>
+      <span>USD/SGD <b>1.3480</b> <i class="down">▼0.11%</i></span>
+      <span>AUD/USD <b>0.6590</b> <i class="up">▲0.18%</i></span>
+      <span>XAU/USD <b>2,345.10</b> <i class="up">▲0.42%</i></span>
+      <span>BRENT <b>82.45</b> <i class="down">▼0.63%</i></span>
+      <!-- duplicated for a seamless loop -->
+      <span>USD/MYR <b>4.2150</b> <i class="up">▲0.12%</i></span>
+      <span>EUR/USD <b>1.0842</b> <i class="down">▼0.08%</i></span>
+      <span>GBP/USD <b>1.2715</b> <i class="up">▲0.21%</i></span>
+      <span>USD/JPY <b>149.32</b> <i class="up">▲0.34%</i></span>
+      <span>USD/CNH <b>7.2410</b> <i class="down">▼0.05%</i></span>
+      <span>USD/SGD <b>1.3480</b> <i class="down">▼0.11%</i></span>
+      <span>AUD/USD <b>0.6590</b> <i class="up">▲0.18%</i></span>
+      <span>XAU/USD <b>2,345.10</b> <i class="up">▲0.42%</i></span>
+      <span>BRENT <b>82.45</b> <i class="down">▼0.63%</i></span>
+    </div>
+  </div>
+
+  <!-- ===== Navigation (CSS-only mobile menu) ===== -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">SJ<span>G</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav__toggle" />
+      <label for="nav-toggle" class="nav__burger" aria-label="Open menu"><span></span></label>
+      <nav class="nav__links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="btn btn--small">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Global Markets · Corporate Sales</p>
+          <h1>Sheng Jun Gan</h1>
+          <p class="hero__lead">
+            FX and rates sales dealer helping corporate clients manage currency risk —
+            from spot and forwards to digital execution on eFX platforms.
+          </p>
+          <div class="hero__cta">
+            <a href="#experience" class="btn">View Experience</a>
+            <a href="resume.pdf" class="btn btn--ghost">Download CV</a>
+          </div>
+        </div>
+
+        <!-- Decorative "terminal" card -->
+        <div class="card terminal">
+          <div class="terminal__head">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <p>Coverage Snapshot</p>
+          </div>
+          <ul class="terminal__rows">
+            <li><span>G10 FX</span><span>USD · EUR · GBP · JPY · AUD</span></li>
+            <li><span>Asia FX</span><span>MYR · SGD · CNH</span></li>
+            <li><span>Commodities</span><span>Gold · Oil</span></li>
+            <li><span>Products</span><span>Spot · Forwards · Swaps</span></li>
+            <li><span>Licence</span><span class="mono">PKMC M1–M4 ✓</span></li>
+          </ul>
+          <!-- simple CSS bar "chart" -->
+          <div class="bars" aria-hidden="true">
+            <i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i>
+            <i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:80%"></i>
+            <i style="--h:74%"></i><i style="--h:92%"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="container stats">
+        <div><strong>CFA</strong><span>Level I Passed</span></div>
+        <div><strong>PKMC</strong><span>Licensed Dealer</span></div>
+        <div><strong>FSTEP</strong><span>Batch 31</span></div>
+        <div><strong>Monash</strong><span>B.Bus &amp; Comm</span></div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about" class="section">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">01 — About</p>
+          <h2>Markets, clients and clean execution.</h2>
+        </div>
+        <div>
+          <p>
+            I'm a Global Markets corporate sales dealer based in Kuala Lumpur. Day to day I execute
+            FX forwards and early take-ups for corporate clients, support coverage of a large client
+            on rates and swaps, and drive adoption of the bank's eFX platforms — pitching, onboarding
+            and training users.
+          </p>
+          <p>
+            I follow the major and regional currencies alongside gold and oil, and I care about
+            turning market moves into clear, practical conversations with clients.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience" class="section section--grey">
+      <div class="container">
+        <p class="eyebrow">02 — Experience</p>
+        <h2>Where I've worked</h2>
+
+        <div class="timeline">
+          <article class="timeline__item">
+            <div class="timeline__meta">
+              <span class="mono">Dec 2025 — Present</span>
+            </div>
+            <div class="card">
+              <h3>Dealer, Corporate Sales – Global Markets</h3>
+              <p class="org">UOB Malaysia</p>
+              <ul class="ticks">
+                <li>Execute FX forwards and early take-ups for corporate clients.</li>
+                <li>Assist senior salesperson covering a large client on rates and swaps.</li>
+                <li>Pitch, onboard and train clients on the bank's eFX platforms.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline__item">
+            <div class="timeline__meta">
+              <span class="mono">2025 — 2026</span>
+            </div>
+            <div class="card">
+              <h3>Financial Sector Talent Enrichment Programme</h3>
+              <p class="org">FSTEP · Batch 31</p>
+              <ul class="ticks">
+                <li>One-year programme: 3 months classroom, 9 months on the job at financial institutions.</li>
+                <li>Led social-impact projects under Project Catalyst.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Credentials ===== -->
+    <section id="credentials" class="section">
+      <div class="container">
+        <p class="eyebrow">03 — Credentials</p>
+        <h2>Education &amp; licences</h2>
+
+        <div class="grid grid--3">
+          <div class="card cred">
+            <span class="cred__tag">Degree</span>
+            <h3>Bachelor of Business and Commerce</h3>
+            <p>Monash University · Banking &amp; Financial Management; Applied Economics</p>
+            <span class="mono muted">Graduated Jun 2025</span>
+          </div>
+          <div class="card cred">
+            <span class="cred__tag">Charter</span>
+            <h3>CFA Level I</h3>
+            <p>CFA Institute — passed.</p>
+            <span class="mono muted">Aug 2025</span>
+          </div>
+          <div class="card cred">
+            <span class="cred__tag">Licence</span>
+            <h3>PKMC Modules 1–4</h3>
+            <p>Licensed dealer — Malaysian financial markets certification.</p>
+            <span class="mono muted">Jul 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects" class="section section--grey">
+      <div class="container">
+        <p class="eyebrow">04 — Projects</p>
+        <h2>Selected work</h2>
+
+        <div class="grid grid--3">
+          <article class="card project">
+            <h3>LockFit Park Lockers</h3>
+            <p>Public park locker initiative — secured council engagement and prepared corporate sponsorship pitches.</p>
+            <div class="chips"><span>Stakeholders</span><span>Sponsorship</span></div>
+          </article>
+          <article class="card project">
+            <h3>Campus Umbrella Racks</h3>
+            <p>Shared borrow-and-return umbrella pilot across university campuses, with handover to student societies.</p>
+            <div class="chips"><span>Pilot</span><span>Operations</span></div>
+          </article>
+          <article class="card project">
+            <h3>Project Catalyst – SDG</h3>
+            <p>Sales platform connecting elderly Malaysian makers with buyers, run together with B40 youths.</p>
+            <div class="chips"><span>Social Impact</span><span>Sales</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">05 — Skills</p>
+          <h2>Toolkit</h2>
+        </div>
+        <div class="skills">
+          <div class="skill"><span>FX Spot &amp; Forwards</span><div class="meter"><i style="--w:90%"></i></div></div>
+          <div class="skill"><span>Rates &amp; Swaps</span><div class="meter"><i style="--w:70%"></i></div></div>
+          <div class="skill"><span>Client Relationship Management</span><div class="meter"><i style="--w:85%"></i></div></div>
+          <div class="skill"><span>eFX Platforms &amp; Onboarding</span><div class="meter"><i style="--w:88%"></i></div></div>
+          <div class="skill"><span>Macro &amp; Market Analysis</span><div class="meter"><i style="--w:75%"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact" class="section contact">
+      <div class="container contact__inner">
+        <p class="eyebrow eyebrow--light">06 — Contact</p>
+        <h2>Let's talk markets.</h2>
+        <p>Open to conversations about Global Markets sales roles and FX hedging.</p>
+        <div class="contact__links">
+          <a href="mailto:you@example.com" class="btn btn--light">you@example.com</a>
+          <a href="https://www.linkedin.com/in/your-profile" class="btn btn--outline-light" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Sheng Jun Gan</p>
+      <p class="muted">Ticker values are illustrative only.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
